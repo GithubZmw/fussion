@@ -1,0 +1,33 @@
+syntax = "proto2";
+package TAproto;
+
+option cc_generic_services = true;
+
+// 消息定义
+message UAVIDRequest {
+  required bytes uav_id = 1;
+}
+
+message Parameters {
+    optional int32 n = 1;
+    optional int32 tm = 2;
+    optional bytes q = 3;
+    optional bytes P2 = 4;
+    optional bytes g = 5;
+    optional bytes beta = 6;
+    optional bytes PK = 7;
+}
+
+message UAVIDResponse {
+    optional Parameters params = 1;
+    optional bytes cj = 2;
+    optional bytes sj = 3;
+    optional bytes M = 4;
+    optional int32 t = 5;
+}
+
+
+// 服务定义
+service RegisterService {
+  rpc Register(UAVIDRequest) returns (UAVIDResponse);
+}

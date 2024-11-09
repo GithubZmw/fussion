@@ -1,0 +1,29 @@
+syntax="proto2";
+package example;
+
+option cc_generic_services = true;
+
+message EchoRequest {
+      required string message = 1;
+};
+
+message EchoResponse {
+      required string message = 1;
+};
+
+message MutiParamsRequest {
+      required string param1 = 1;
+      optional string param2 = 2;
+};
+message MutiParamsResponse {
+      required string param1 = 1;
+      optional string param2 = 2;
+};
+
+service EchoService {
+      rpc Echo(EchoRequest) returns (EchoResponse);
+};
+
+service MutiParamsService {
+      rpc MutiParams(MutiParamsRequest) returns (MutiParamsResponse);
+};

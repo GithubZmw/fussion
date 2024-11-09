@@ -1,0 +1,20 @@
+syntax = "proto2";
+package AGGproto;
+
+option cc_generic_services = true;
+
+// 消息定义
+message verifyRequest {
+    optional bytes PK_v = 1;
+}
+
+message verifyResponse {
+    optional bytes auxs = 1;
+    optional bytes sigs = 2;
+    optional bytes IDs = 3;
+}
+
+// 服务定义
+service TranService {
+  rpc Tran(verifyRequest) returns (verifyResponse);
+}

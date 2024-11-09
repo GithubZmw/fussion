@@ -1,0 +1,21 @@
+syntax = "proto2";
+package UAVproto;
+
+option cc_generic_services = true;
+
+// 消息定义
+message SignRequest {
+    required bytes M = 1;
+    required int32 t = 2;
+}
+
+message SignResponse {
+    required bytes cj = 1;
+    required bytes sig = 2;
+    required bytes ID = 3;
+}
+
+// 服务定义
+service SignService {
+  rpc sign(SignRequest) returns (SignResponse);
+}
